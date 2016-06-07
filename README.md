@@ -2,7 +2,7 @@
 ###Software para funcionar em um appliance para analise de Vulnerabilidade de redes e servidores
 
 ##Descrição
-O Projeto Horus, e Um software Que ESTÁ em Processo de Desenvolvimento em Parceria com o professor de Jeffersson Silva e Clayton Costa do IFRN Ipanguaçu, ELE ESTÁ em Desenvolvimento Para rodar em hum Raspberry Pi, e SUA principais Função E Scanner de Portas vulneráveis, EO diagnóstico delas
+O Projeto Horus, e Um software Que ESTÁ em Processo de Desenvolvimento em parceria com o professor de Jeffersson Silva e Clayton Costa do IFRN Ipanguaçu, ele  está em Desenvolvimento Para rodar em um Raspberry Pi, e suas principais Funçoes E Scannear  Portas vulneráveis, E  diagnósticar delas
 
 
 ##Compilação e execução
@@ -15,7 +15,7 @@ O Projeto Horus, e Um software Que ESTÁ em Processo de Desenvolvimento em Parce
 
 Anderson Cirilo 
  - [GitHub](https://github.com/Vectro26)
-
+Galvão Santos
 
 ##Disponível em:
 
