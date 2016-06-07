@@ -15,6 +15,8 @@ O Projeto Horus, e Um software Que ESTÁ em Processo de Desenvolvimento em parce
 
 Anderson Cirilo 
  - [GitHub](https://github.com/Vectro26)
+
+
 Galvão Santos
 
 ##Disponível em:
