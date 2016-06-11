@@ -4,26 +4,26 @@
  * and open the template in the editor.
  */
 package projetohorus;
-import static com.sun.javafx.animation.TickCalculation.sub;
 import org.taksmind.subnet.*;
-import org.taksmind.subnet.util.ANDing;
 import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.regex.Pattern;
 import org.apache.commons.net.util.SubnetUtils;
-import static projetohorus.ProjetoHorus.rede;
 
 /**
  *
  * @author Vectro26
  */
-public class TamanhoHost {
+public class TamanhoHost  {
       
     private int numfirst;
+
+   
+
+    
 
     public int getNumfirst() {
         return numfirst;
@@ -52,8 +52,8 @@ public class TamanhoHost {
         Subnet sc = new Subnet();
 
         System.out.println(utils.getInfo());
-        String first = utils.getInfo().getLowAddress().toString();
-        String last = utils.getInfo().getHighAddress().toString();
+        String first = utils.getInfo().getLowAddress();
+        String last = utils.getInfo().getHighAddress();
         String[] iplast = last.split(Pattern.quote("."));
         String[] ipfirst = first.split(Pattern.quote("."));
 

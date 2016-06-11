@@ -1,15 +1,14 @@
 package projetohorus;
 
+import com.itextpdf.text.DocumentException;
 import java.io.IOException;
-import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -17,12 +16,20 @@ import java.util.ArrayList;
  */
 public class ProjetoHorus extends Thread {
 
-    public static ArrayList<String> IP = new ArrayList<String>();
+    public static DadosColetadosPDF dados;
+    public static ArrayList<String> IP = new ArrayList<>();
+
+    public static ArrayList<String> NameHost = new ArrayList<>();
+
     public static PingIP sc = new PingIP();
     static NetworkInterface rede;
-
+    static PingIP ping = new PingIP();
     public static TamanhoHost tm = new TamanhoHost();
-
+    public static int r;
+    public static DadosColetadosPDF pdf = new DadosColetadosPDF();
+     public static JProgressBar progresso = new JProgressBar();
+		
+     
     @Override
     public void run() {
 
@@ -49,12 +56,12 @@ public class ProjetoHorus extends Thread {
             try {
                 if (address.isReachable(1700)) //testa o IP para ver se ele está disponivel
                 {
-                    String IpRede = address.toString();
+                    String IpRede = address.getHostAddress();
 
-                    System.out.println(IpRede + " está na rede " + "seu nome é:" + address.getHostAddress());
-                    sc.setIP(IpRede);
+                    System.out.println(IpRede + " está na rede " + "seu nome é:" + address.getHostName());
+
                     IP.add(IpRede);
-
+                    NameHost.add(address.getHostName());
                 }
             } catch (IOException ex) {
                 Logger.getLogger(ProjetoHorus.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,10 +71,12 @@ public class ProjetoHorus extends Thread {
 
     }
 
-    public static void main(String[] args) throws UnknownHostException, IOException {
-
+    public static void main(String[] args) throws UnknownHostException, IOException, DocumentException, InterruptedException {
+   
         tm.TamanhoHost();
-
+       
+        
+        
         InetAddress localhost = InetAddress.getLocalHost(); // me retorna o IP do Host
         Thread myThread = new ProjetoHorus();
         myThread.start();
@@ -81,17 +90,21 @@ public class ProjetoHorus extends Thread {
 
             if (address.isReachable(1700)) //testa o IP para ver se ele está disponivel
             {
-                String IpRede = address.toString();
+                String IpRede = address.getHostAddress();
 
-                System.out.println(IpRede + " está na rede " + "seu nome é:" + address.getHostAddress());
-                sc.setIP(IpRede);
+                System.out.println(IpRede + " está na rede " + "seu nome é:" + address.getHostName());
+
                 IP.add(IpRede);
+                NameHost.add(address.getHostName());
             }
-           
+
         }
-        
-        
-         System.out.println(IP.size());
+
+        System.out.println(IP.size());
+        r = IP.size();
+        ping.PingPortas();
+
+   
 
     }
 
