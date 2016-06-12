@@ -72,11 +72,7 @@ public class ProjetoHorus extends Thread {
     }
 
     public static void main(String[] args) throws UnknownHostException, IOException, DocumentException, InterruptedException {
-   
-        tm.TamanhoHost();
-       
-        
-        
+        tm.TamanhoHost(); 
         InetAddress localhost = InetAddress.getLocalHost(); // me retorna o IP do Host
         Thread myThread = new ProjetoHorus();
         myThread.start();

@@ -16,6 +16,10 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import org.apache.commons.net.util.SubnetUtils;
 
 /**
  *
@@ -27,53 +31,51 @@ public class DadosColetadosPDF extends PingIP {
         Document doc = null;
         OutputStream os = null;
 
-      
-
         try {
+
+            InetAddress localHost = Inet4Address.getLocalHost();
+            NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
+            short x = networkInterface.getInterfaceAddresses().get(0).getNetworkPrefixLength();
+            String n = localHost.getHostAddress() + "/" + x;
+            SubnetUtils utils = new SubnetUtils(n);
+
             doc = new Document(PageSize.A4, 72, 72, 72, 72);
-            os = new FileOutputStream("tesfinal.pdf");
+            os = new FileOutputStream("tesfinal11.pdf");
             PdfWriter.getInstance(doc, os);
             doc.open();
 
-            
-            
-            
             PdfPTable table = new PdfPTable(new float[]{0.50f, 0.70f, 0.90f});
 
             table = new PdfPTable(3);
 
             Paragraph p = new Paragraph("PROJETO HORUS");
             p.setAlignment(Element.ALIGN_CENTER);
-             p.setSpacingAfter(30);
+            p.setSpacingAfter(30);
             doc.add(p);
-           
-           
+            p = new Paragraph("Informações da Network");
+            p.setAlignment(Element.ALIGN_CENTER);
+            p.setSpacingAfter(30);
+
+            doc.add(p);
+            Paragraph paragraph = new Paragraph("" + utils.getInfo());
+            paragraph.setAlignment(Element.ALIGN_CENTER);
+            paragraph.setSpacingAfter(30);
+            doc.add(paragraph);
             table.setHorizontalAlignment(Element.ALIGN_CENTER);
 
-            PdfPCell header = new PdfPCell(new Paragraph("Diagnostico do Scannner da Rede"));
+            PdfPCell header = new PdfPCell(new Paragraph("Diagnostico do Scanner da Rede"));
             header.setColspan(3);
             table.addCell(header);
             table.addCell("IP");
             table.addCell("HostName");
-             table.addCell("Portas Abertas");
+            table.addCell("Portas Abertas");
             for (int i = 0; i < IP.size(); i++) {
+
                 table.addCell(IP.get(i));
                 table.addCell(NameHost.get(i));
-                 table.addCell(""+Portas.get(i));
+                table.addCell("" + PortasA.get(i).toString());
             }
             doc.add(table);
-
-            p = new Paragraph("Portas abertas por  NameHost");
-            p.setAlignment(Element.ALIGN_CENTER);
-            p.setSpacingAfter(30);
-            doc.add(p);
-            
-           
-
-              
-
-                doc.add(p);
-            
 
         } finally {
             if (doc != null) {

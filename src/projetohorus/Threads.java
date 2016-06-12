@@ -56,16 +56,18 @@ public class Threads extends PingIP {
 
             // Obtém o nome do computador/dispositivo pelo endereço IP informado
             String hostname = addr.getHostName();
-               String portas2 = null;
+               String portas2 = "";
             for (int j = inicio; j <= fim; j++) {
                 Socket s = null;
 
                 try {
                     // Tenta abrir uma conexão na porta 'j'
-                    System.out.println("entrou2 " + j);
+                    System.out.println(ports +"  Thread " + j);
                     s = new Socket(addr, j);
                     // Caso consiga..
-                    System.out.println("1 " + j + " está aberta em: " + hostname);
+                    
+                  
+                    System.out.println("1" + j + " está aberta em: " + hostname);
                     Portas.add(j + " ");
                     
                     
