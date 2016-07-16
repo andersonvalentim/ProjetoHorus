@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package projetohorus;
-import org.taksmind.subnet.*;
+
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -17,13 +17,9 @@ import org.apache.commons.net.util.SubnetUtils;
  *
  * @author Vectro26
  */
-public class TamanhoHost  {
-      
+public class TamanhoHost {
+
     private int numfirst;
-
-   
-
-    
 
     public int getNumfirst() {
         return numfirst;
@@ -49,7 +45,6 @@ public class TamanhoHost  {
         String n = localHost.getHostAddress() + "/" + x;
         System.out.println(n);
         SubnetUtils utils = new SubnetUtils(n);
-        Subnet sc = new Subnet();
 
         System.out.println(utils.getInfo());
         String first = utils.getInfo().getLowAddress();
@@ -61,6 +56,5 @@ public class TamanhoHost  {
         numlast = Integer.parseInt(iplast[3]);
 
     }
-    
-        
+
 }

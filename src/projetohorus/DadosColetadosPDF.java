@@ -13,12 +13,14 @@ import java.io.OutputStream;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import org.apache.commons.mail.EmailException;
 import org.apache.commons.net.util.SubnetUtils;
 
 /**
@@ -27,28 +29,32 @@ import org.apache.commons.net.util.SubnetUtils;
  */
 public class DadosColetadosPDF extends PingIP {
 
-    void GerarPDF() throws IOException, DocumentException {
+    void GerarPDF() throws IOException, DocumentException, EmailException {
         Document doc = null;
         OutputStream os = null;
 
         try {
+            doc = new Document(PageSize.A4, 72, 72, 72, 72);
+            os = new FileOutputStream("tesfinal11.pdf");
+            PdfWriter.getInstance(doc, os);
+            doc.open();
+            Image img = Image.getInstance("LogoProject.png");
+            img.setAlignment(Element.ALIGN_CENTER);
+
+            doc.add(img);
 
             InetAddress localHost = Inet4Address.getLocalHost();
             NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
             short x = networkInterface.getInterfaceAddresses().get(0).getNetworkPrefixLength();
             String n = localHost.getHostAddress() + "/" + x;
             SubnetUtils utils = new SubnetUtils(n);
-
-            doc = new Document(PageSize.A4, 72, 72, 72, 72);
-            os = new FileOutputStream("tesfinal11.pdf");
-            PdfWriter.getInstance(doc, os);
-            doc.open();
+            ;
 
             PdfPTable table = new PdfPTable(new float[]{0.50f, 0.70f, 0.90f});
 
             table = new PdfPTable(3);
 
-            Paragraph p = new Paragraph("PROJETO HORUS");
+            Paragraph p = new Paragraph("");
             p.setAlignment(Element.ALIGN_CENTER);
             p.setSpacingAfter(30);
             doc.add(p);
@@ -73,21 +79,23 @@ public class DadosColetadosPDF extends PingIP {
 
                 table.addCell(IP.get(i));
                 table.addCell(NameHost.get(i));
-                table.addCell("" + PortasA.get(i).toString());
+                table.addCell("" + PortasA.get(i));
             }
             doc.add(table);
 
         } finally {
             if (doc != null) {
-                //fechamento do documento
+
                 doc.close();
             }
             if (os != null) {
-                //fechamento da stream de saída
+
                 os.close();
             }
 
         }
+        EnvioEmail sc = new EnvioEmail();
+        sc.EnvioEmail();
 
     }
 }
