@@ -33,11 +33,11 @@ public class EnvioEmail {
 
         MultiPartEmail emails = new MultiPartEmail();
         emails.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
-        emails.addTo("vectro2610@gmail.com", "Anderson"); //destinatário
+        emails.addTo("", "Anderson"); //destinatário
         emails.setFrom("projecthorusifrn@gmail.com", "Projeto");
         emails.setSubject("Teste -> Email com anexo");
         emails.setMsg("conteudo");
-        emails.setAuthentication("projecthorusifrn@gmail.com", "projecthorus");
+        emails.setAuthentication("projecthorusifrn@gmail.com", "");
         emails.setSmtpPort(465);
         emails.setSSL(true);
         emails.setTLS(true);
