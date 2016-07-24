@@ -37,7 +37,7 @@ public class EnvioEmail {
         emails.setFrom("projecthorusifrn@gmail.com", "Projeto");
         emails.setSubject("Teste -> Email com anexo");
         emails.setMsg("conteudo");
-        emails.setAuthentication("projecthorusifrn@gmail.com", "");
+        emails.setAuthentication("email", "senha");
         emails.setSmtpPort(465);
         emails.setSSL(true);
         emails.setTLS(true);
