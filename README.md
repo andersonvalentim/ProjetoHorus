@@ -14,13 +14,13 @@ O Projeto Horus, é um software que está em processo de desenvolvimento em parc
 ##Autor:
 
 Anderson Cirilo 
+ 
  - [GitHub](https://github.com/Vectro26)
 
 
 Galvão Santos
+
 -[GitHub](https://github.com/SuperMeatBoyFury)
-
-
 
 ##Disponível em:
 
