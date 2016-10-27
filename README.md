@@ -20,7 +20,7 @@ Anderson Cirilo
 
 Galvão Santos
 
--[GitHub](https://github.com/SuperMeatBoyFury)
+- [GitHub](https://github.com/SuperMeatBoyFury)
 
 ##Disponível em:
 
